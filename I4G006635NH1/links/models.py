@@ -15,6 +15,8 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+from IsraelAPI.I4G006635NH1.links.managers import ActiveLinkManager
+
 # Create your models here.
 class link(models.Model):
     target_url=models.URLField(max_lenght=200)
@@ -23,3 +25,7 @@ class link(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateField()
     active=models.BooleanField(default=True)
+
+    
+    objects = models.Manager()
+    public = ActiveLinkManager()
